@@ -12,6 +12,37 @@ include_once('RenatZlobin/Square.php');
 include_once('RenatZlobin/MyLog.php');
 
 
+echo "Введите 3 числа. \n";
+$paramens = explode(" ", fgets(STDIN));
 
+try {
+	if (count($paramens) != 3) {
+		throw new Exception("Вы ввели не 3 числа. Попробуйте снова");
+	}
+	$a = (float)$paramens[0];
+	$b = (float)$paramens[1];
+	$c = (float)$paramens[2];
+	if ($paramens[0] == 0) {
+		MyLog::log("Linear equation: ".$b."x + ".$c." = 0");
+		$linear = new Linear();
+		MyLog::log("Answer: ".$linear->llinear($b, $c));	
+	}
+	else {
+		MyLog::log("Square equation: ".$a."x^2 + ".$b."x + ".$c." = 0");
+		$square = new Square();
+		if (is_array($temp = $square->solve($a, $b, $c))) {
+			MyLog::log("Answer: ". implode(" , ", $temp));
+		}
+		else {
+			MyLog::log("Answer: ".$temp);
+		}
+		
+	}	
+}
+catch (Exception $e){
+	MyLog::log($e->GetMessage());
+}
+
+MyLog::write()."\n";
 
 ?>
