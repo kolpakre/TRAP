@@ -12,12 +12,18 @@ include_once('RenatZlobin/Square.php');
 include_once('RenatZlobin/MyLog.php');
 
 
-echo "Введите 3 числа. \n";
+echo "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 3 пїЅпїЅпїЅпїЅпїЅ. \n";
 $paramens = explode(" ", fgets(STDIN));
 
 try {
+	
+	$file = fopen("version", "r");
+	MyLog::log("Р’С‹РїРѕР»РЅСЏРµС‚СЃСЏ СЃ РІРµСЂРёСЃРёРё: ".fgets($file));
+	echo "Version: ".fgets($file, 4096);
+	fclose($file);
+
 	if (count($paramens) != 3) {
-		throw new Exception("Вы ввели не 3 числа. Попробуйте снова");
+		throw new Exception("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 3 пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
 	}
 	$a = (float)$paramens[0];
 	$b = (float)$paramens[1];
@@ -41,6 +47,7 @@ try {
 }
 catch (Exception $e){
 	MyLog::log($e->GetMessage());
+	MyLog::log($e);
 }
 
 MyLog::write()."\n";
