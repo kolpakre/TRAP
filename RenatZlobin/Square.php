@@ -3,11 +3,11 @@ namespace renat_zlobin;
 class Square extends Linear implements \core\EquationInterface {
 	private $discr;
 
-	protected function discriminant($a,$b,$c){
+	public function discriminant($a,$b,$c){ 
 		return (($b*$b) - (4 * $a * $c));
 	}
 
-	public function solve($a,$b,$c)
+	public function solve($a,$b,$c) 
 	{
 		if($a === 0)
         {
@@ -16,6 +16,7 @@ class Square extends Linear implements \core\EquationInterface {
 		else
 		{
 			$discr = $this->discriminant($a,$b,$c);
+
 			if ($discr < 0)
 			{
 				$this->x = false;

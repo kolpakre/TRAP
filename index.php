@@ -11,19 +11,23 @@ include_once('RenatZlobin/Linear.php');
 include_once('RenatZlobin/Square.php');
 include_once('RenatZlobin/MyLog.php');
 
+use renat_zlobin\MyLog;
+use renat_zlobin\Linear;
+use renat_zlobin\Square;
 
-echo "������� 3 �����. \n";
+
+echo "Enter 3 numbers. \n";
 $paramens = explode(" ", fgets(STDIN));
 
 try {
 	
 	$file = fopen("version", "r");
-	MyLog::log("Выполняется с верисии: ".fgets($file));
+	MyLog::log("Performed from version: ".fgets($file));
 	echo "Version: ".fgets($file, 4096);
 	fclose($file);
 
 	if (count($paramens) != 3) {
-		throw new Exception("�� ����� �� 3 �����. ���������� �����");
+		throw new Exception("You entered not 3 numbers. try it again");
 	}
 	$a = (float)$paramens[0];
 	$b = (float)$paramens[1];

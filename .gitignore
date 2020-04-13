@@ -3,3 +3,5 @@ core/
 version
 log/
 /log
+vendor/
+composer.log
